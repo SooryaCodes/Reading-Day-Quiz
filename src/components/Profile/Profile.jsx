@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "@lottiefiles/lottie-player";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Profile() {
   const history = useHistory();
+  const {user} = useContext(AuthContext);
+
+  useEffect(() =>{
+
+  },[user])
   return (
     <div className="w-full h-screen bg-indigo-500 relative font-Roboto">
       <div
@@ -20,7 +26,7 @@ export default function Profile() {
         ></lottie-player>
         <div className="-mt-8 flex flex-col items-center justify-start">
           <p className="text-xl font-medium " style={{ color: "#33365c" }}>
-            Congrats Soorya
+            Congrats {user?.name.split(" ")[0]}
           </p>
           <p
             className="text-center text-sm px-10 pt-1 font-medium font-Mulish"
@@ -40,7 +46,7 @@ export default function Profile() {
             className="text-3xl pt-2 font-semibold"
             style={{ color: "#323a53" }}
           >
-            20/20
+            {user?.score}/20
           </p>
         </div>
         <div className="w-full flex items-center justify-between left-0 absolute bottom-10 px-8">

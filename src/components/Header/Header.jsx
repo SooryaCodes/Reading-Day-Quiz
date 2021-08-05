@@ -14,7 +14,7 @@ export default function Header() {
       {/* Quiz */}
       <div className="flex items-center justify-center ">
         {/* <span onClick={isAuth ? handleSignout : () => { history.push("/signup") }} className="cursor-pointer font-Cormorant-Unicase text-2xl font-normal">{user ? user.name : "Quiz"}</span> */}
-        <span onClick={() => { history.push(isAuth ? "/profile" : "/signin") }} className="cursor-pointer font-Cormorant-Unicase text-2xl font-normal">{user ? user.name : "Quiz"}</span>
+        <span onClick={() => { history.push("/quiz") }} className="cursor-pointer font-Cormorant-Unicase text-2xl font-normal">{user ? user.name : "Quiz"}</span>
       </div>
     </div>
   );

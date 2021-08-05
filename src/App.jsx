@@ -47,6 +47,7 @@ const App = () => {
 
         {/* Profile */}
         <Private path="/profile"  >
+          
           <Profile />
         </Private>
 

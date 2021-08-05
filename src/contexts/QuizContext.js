@@ -14,6 +14,8 @@ export const QuizProvider = ({ children }) => {
     const { score, setScore } = useContext(AuthContext);
     const [answer, setAnswer] = useState();
     const { user, setUser, setLoading } = useContext(AuthContext)
+    const [status,setStatus] = useState(false);
+    const history = useHistory()
 
     // Handle Answer
     const handleAnswer = (index) => {
@@ -65,8 +67,8 @@ export const QuizProvider = ({ children }) => {
 
     // Handle Next
     const handleNext = () => {
+        setLoading(true)
         if (answer != null) {
-            setLoading(true)
             let status = validateAnswer()
 
             if (status) {
@@ -78,14 +80,30 @@ export const QuizProvider = ({ children }) => {
         } else {
             handleQuiz(false)
         }
-        setAnswer(null)
-        setQuiz(null)
-        getUserData()
+
+        if (user.questionNo < 5) {
+            setAnswer(null)
+            setQuiz(null)
+            getUserData()
+        } else {
+            endQuiz()
+        }
     }
 
 
+    // End Quiz
+    const endQuiz = () => {
+        localStorage.setItem("quiz", "completed")
+        setAnswer(null)
+        setQuiz(0)
+        getUserData()
+        setLoading(false)
+        setStatus(true)
+        history.push("/profile")
+    }
+
     const value = {
-        quiz, setQuiz, handleAnswer, answer, handleNext
+        quiz, setQuiz, handleAnswer, answer, handleNext,status,setStatus
     }
 
     return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
