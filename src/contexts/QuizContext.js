@@ -65,6 +65,7 @@ export const QuizProvider = ({ children }) => {
 
     // Handle Next
     const handleNext = () => {
+        console.log(user.questionNo)
         if (answer != null) {
             setLoading(true)
             let status = validateAnswer()
@@ -78,15 +79,29 @@ export const QuizProvider = ({ children }) => {
         } else {
             handleQuiz(false)
         }
-        setAnswer(null)
-        setQuiz(null)
-        getUserData()
+
+        if (user.questionNo < 5) {
+
+            setAnswer(null)
+            setQuiz(null)
+            getUserData()
+        } else {
+            endQuiz()
+        }
+    }
+
+
+    // Handle End Quiz
+    const endQuiz = () => {
+
     }
 
 
     const value = {
         quiz, setQuiz, handleAnswer, answer, handleNext
     }
+
+
 
     return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 

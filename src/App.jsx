@@ -16,6 +16,7 @@ import Add from "./components/Add/Add";
 import Private from "./components/Private/Private"
 import Profile from "./pages/Profile";
 import Error from "./components/Error/Error";
+import Share from "./components/Share/Share";
 
 const App = () => {
   const history = useHistory();
@@ -51,9 +52,14 @@ const App = () => {
         </Private>
 
 
-        {/* Add */}
+        {/* Error */}
         <Route path="/error">
           <Error />
+        </Route>
+
+        {/* Share */}
+        <Route path="/share">
+          <Share />
         </Route>
 
       </Switch>

@@ -2,8 +2,10 @@ import React from "react";
 import "@lottiefiles/lottie-player";
 import { useHistory } from "react-router-dom";
 
+
 export default function Profile() {
   const history = useHistory();
+
   return (
     <div className="w-full h-screen bg-indigo-500 relative font-Roboto">
       <div
@@ -58,3 +60,4 @@ export default function Profile() {
     </div>
   );
 }
+

@@ -2,19 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
 const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
 
-const overlay = require("webpack-dev-server/client/overlay");
-const show = overlay.showMessage;
-overlay.showMessage = function (messages) {
-  const newMessages = messages.map((msg) =>
-    msg.split("\n").slice(2).join("\n")
-  );
-
-  show(newMessages);
-};
+require("dotenv").config();
 
 const devMode = process.env.NODE_ENV !== "production";
 module.exports = {
@@ -77,7 +68,7 @@ module.exports = {
           globOptions: {
             dot: true,
             gitignore: true,
-            ignore: ["**/*.html", "**/*.js", "**/*.css", "**/*.scss"],
+            ignore: ["*/.html", "*/.js", "*/.css", "*/.scss"],
           },
         },
       ],
@@ -85,10 +76,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "vendor.[contenthash].css",
     }),
-    new Dotenv(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
   ],
-  devtool: 'cheap-module-source-map', 
+  devtool: "cheap-module-source-map",
   devServer: {
     contentBase: path.join(__dirname, `src`),
     port: 3000,
