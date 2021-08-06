@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }) => {
         firebase.auth().onAuthStateChanged(async (userData) => {
             console.log(userData)
             if (userData) {
-        console.log("dh")
                 let ref = await firebase.firestore().collection("users").where("uid", "==", userData.uid).get();
                 let userRef = ref.docs.map((doc) => doc.data())[0]
                 setUser(userRef)

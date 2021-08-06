@@ -8,6 +8,7 @@ import html2canvas from 'html2canvas';
 export default function Profile() {
   const history = useHistory();
 const shareTarget = useRef(null)
+const btn = useRef(null)
   const { user, setUser } = useContext(AuthContext);
   
   
@@ -33,10 +34,11 @@ const shareTarget = useRef(null)
       let userRef = ref.docs.map((doc) => doc.data())[0]
       setUser(userRef)
     }
-    onShare.bind(onShare, shareTarget)
+    btn.current.click()
   }, [])
 
   return (
+    <>
     <div className="w-full h-screen bg-indigo-500 relative font-Roboto flex items-center justify-center" >
 
     <div
@@ -79,5 +81,7 @@ const shareTarget = useRef(null)
     </div>
 </div>
   </div>
+  <button ref={btn} hidden onClick={()=>onShare.bind(onShare, shareTarget)}></button>
+  </>
   );
 }
