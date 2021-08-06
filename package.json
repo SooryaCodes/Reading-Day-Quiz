@@ -36,6 +36,7 @@
     "core-js": "^3.16.0",
     "dotenv": "^10.0.0",
     "firebase": "^8.8.1",
+    "html2canvas": "^1.2.1",
     "locomotive-scroll": "^4.1.1",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
