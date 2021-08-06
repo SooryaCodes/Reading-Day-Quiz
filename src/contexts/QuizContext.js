@@ -95,11 +95,11 @@ export const QuizProvider = ({ children }) => {
 
     // End Quiz
     const endQuiz = () => {
+        setLoading(false)
         localStorage.setItem("quiz", "completed")
         setAnswer(null)
         setQuiz(0)
         getUserData()
-        setLoading(false)
         setStatus(true)
         history.push("/profile")
     }

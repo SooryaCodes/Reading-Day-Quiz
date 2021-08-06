@@ -43,12 +43,12 @@ export default function Quiz() {
     <div className="bg-white w-full min-h-screen text-dark-700 px-8 font-Mulish relative">
       {/* Top */}
       <div className="w-full flex items-center justify-between py-8">
-        <Link
-          to="/"
+        <button
+          disabled
           className="pointer text-gray-500 transition transition-duration-300 hover:shadow-lg w-10 border rounded-md border-dark h-10 p-3 flex items-center justify-center text-xl border-opacity-10 outline-none"
         >
           <i className="ri-arrow-left-s-line"></i>
-        </Link>
+        </button>
         <span className="text-2xl font-bold" style={{ color: "#39395e" }}>
           00:
           {quiz ? <Timer onEnd={onEnd} status={test} /> : "15"}
