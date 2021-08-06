@@ -8,7 +8,7 @@ export default function Timer({ status, onEnd }) {
         const downloadTimer = setInterval(function () {
             setTime((currentState) => {
                 if (currentState === 0) {
-                    if (user.questionNo === 5) {
+                    if (user.questionNo === 10) {
                         onEnd(true)
                     } else {
                         onEnd(false)
@@ -26,7 +26,7 @@ export default function Timer({ status, onEnd }) {
 
         return () => {
             clearInterval(downloadTimer);
-            if (user.questionNo === 5) {
+            if (user.questionNo === 10) {
                 onEnd(true)
             } else {
                 onEnd(false)

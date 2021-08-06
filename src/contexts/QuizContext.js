@@ -81,12 +81,12 @@ export const QuizProvider = ({ children }) => {
         console.log("hey")
         endQuiz()
     }else {
-        if (user.questionNo < 5) {
+        if (user.questionNo < 10) {
             setAnswer(null)
             setScore(null)
             setQuiz(null)
             getUserData()
-        } else if(user.questionNo === 5){
+        } else if(user.questionNo === 10){
             endQuiz()
         }
     }
