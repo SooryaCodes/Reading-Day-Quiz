@@ -3,9 +3,9 @@ import SignUp from "../components/SignUp/SignUp"
 import { AuthContext } from "../contexts/AuthContext"
 
 export default function Signup() {
-    const [name, setName] = useState("soorya");
-    const [email, setEmail] = useState("soorya@gmail.com");
-    const [password, setPassword] = useState("soorya");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [err, setErr] = useState("");
     const { handleSignup, loading, setLoading } = useContext(AuthContext)
     //validate form

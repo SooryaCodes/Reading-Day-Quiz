@@ -10,7 +10,6 @@ export default function Quiz() {
     useContext(QuizContext);
   const { user, setLoading, score, setScore } = useContext(AuthContext);
   const [test, setTest] = useState(false);
-  
 
   const getUserData = async () => {
     let ref = await firebase
@@ -52,7 +51,7 @@ export default function Quiz() {
         </Link>
         <span className="text-2xl font-bold" style={{ color: "#39395e" }}>
           00:
-          {quiz?<Timer onEnd={onEnd} status={test} />: "15"}
+          {quiz ? <Timer onEnd={onEnd} status={test} /> : "15"}
         </span>
         <span className="w-10 h-10"></span>
       </div>

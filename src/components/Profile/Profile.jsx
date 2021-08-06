@@ -55,7 +55,7 @@ export default function Profile() {
             className="text-3xl pt-2 font-semibold"
             style={{ color: "#323a53" }}
           >
-            {user?.score}/20
+            {user?.score}/10
           </p>
         </div>
         <div className="w-full flex items-center justify-between left-0 absolute bottom-10 px-8">

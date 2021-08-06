@@ -3,8 +3,8 @@ import SignIn from "../components/SignIn/SignIn"
 import { AuthContext } from "../contexts/AuthContext"
 
 export default function Signin() {
-    const [email, setEmail] = useState("soorya@gmail.com");
-    const [password, setPassword] = useState("soorya");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [err, setErr] = useState("");
     const { handleSignin, loading, setLoading } = useContext(AuthContext)
     //validate form

@@ -37,9 +37,10 @@ const shareTarget = useRef(null)
   }, [])
 
   return (
-    <div className="w-full h-screen bg-indigo-500 relative font-Roboto flex items-center justify-center">
+    <div className="w-full h-screen bg-indigo-500 relative font-Roboto flex items-center justify-center" >
 
     <div
+    ref={shareTarget}
     className="w-full bg-white  rounded-b-none rounded-t-2xl flex flex-col items-center justify-start"
     style={{ height: "500px" }}
   >
