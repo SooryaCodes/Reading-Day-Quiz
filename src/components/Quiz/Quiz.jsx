@@ -41,6 +41,7 @@ export default function Quiz() {
 
   return (
     <div className="bg-white w-full min-h-screen text-dark-700 px-8 font-Mulish relative">
+      {console.log(quiz)}
       {/* Top */}
       <div className="w-full flex items-center justify-between py-8">
         <button
@@ -65,7 +66,7 @@ export default function Quiz() {
         {/* Answers */}
         {quiz?.answerOptions.map((option, index) => (
           <div
-            key={option.answerText}
+            key={option.answerText+option.question+quiz.question+index+option.length}
             onClick={() => handleAnswer(index)}
             className={`${
               option.active
