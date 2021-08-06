@@ -2,13 +2,17 @@ import React, { useContext, useEffect } from "react";
 import "@lottiefiles/lottie-player";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import firebase from "../../config/firebase"
 
 export default function Profile() {
   const history = useHistory();
-  const {user} = useContext(AuthContext);
-
-  useEffect(() =>{
-
+  const {user,setUser} = useContext(AuthContext);
+  useEffect(async() =>{
+   if(user){
+    let ref = await firebase.firestore().collection("users").where("uid", "==", user.uid).get();
+    let userRef = ref.docs.map((doc) => doc.data())[0]
+    setUser(userRef)
+   }
   },[user])
   return (
     <div className="w-full h-screen bg-indigo-500 relative font-Roboto">

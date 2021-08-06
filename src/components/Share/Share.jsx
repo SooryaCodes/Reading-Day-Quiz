@@ -66,7 +66,7 @@ const shareTarget = useRef(null)
           </p>
         </div>
         <div className="w-full flex items-center justify-between left-0 absolute bottom-10 px-8">
-          <button className="w-1/2 h-12 py-2  transition transition-duration-300 ease-in transform hover:scale-105 outline-none  rounded-md text-indigo-600">
+          <button onclick={onShare.bind(onShare, shareTarget)} className="w-1/2 h-12 py-2  transition transition-duration-300 ease-in transform hover:scale-105 outline-none  rounded-md text-indigo-600">
             Share
           </button>
           <button
