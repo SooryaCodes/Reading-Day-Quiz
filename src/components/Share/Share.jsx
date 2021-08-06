@@ -23,7 +23,7 @@ const shareTarget = useRef(null)
       files: filesArray,
     };
     navigator.share(shareData).then(() => {
-      console.log('Shared successfully');
+      history.push("/profile")
     });
     
   }
