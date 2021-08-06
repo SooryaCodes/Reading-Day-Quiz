@@ -18,7 +18,7 @@ export default function Profile() {
 
     return (
         <>   
-                 {status ? (<ProfileComp />) : (<Redirect to="/quiz" />)}    
+                 {status? (<ProfileComp />) : (<Redirect to="/quiz" />)}    
         </>
     )
 }
