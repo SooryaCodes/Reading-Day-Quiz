@@ -10,10 +10,7 @@ export default function More() {
           The <br /> Mission
         </span>
         <p className="font-Mulish pt-10 text-base  sm:w-97 998:w-97 lg:text-lg">
-          Through the generation, books are much more than just reading. They
-          are the history keepers; they give us journey through times and epochs
-          to the depth and height of ourselves. We strive to open the worlds via
-          books to everyone.
+        Reading is one of the most fundamental skills a child needs to learn a succeed life.developing good reading habits is vital to our future not just academically, but in every day life as well.
         </p>
       </div>
 

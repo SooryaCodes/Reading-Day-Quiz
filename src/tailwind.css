@@ -1,18 +1,18 @@
 @font-face {
-    font-family: Mak;
-    src: url("./fonts/MAK.otf");
-  }
-  
-  @font-face {
-    font-family: Mak-Bold;
-    src: url("./fonts/MAK-bold.otf");
-  } 
+  font-family: Mak;
+  src: url("./fonts/MAK.otf");
+}
 
-  .s-btn:active {
-background:#1f1f1f
-  }
+@font-face {
+  font-family: Mak-Bold;
+  src: url("./fonts/MAK-bold.otf");
+}
 
-  input,
+.s-btn:active {
+  background: #1f1f1f;
+}
+
+input,
 body,
 textarea,
 button,
@@ -20,6 +20,8 @@ select,
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
+
+
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";

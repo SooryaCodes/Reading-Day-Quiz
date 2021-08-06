@@ -5,7 +5,7 @@ import AlertComp from "../Alert/Alert";
 
 export default function SignUp(props) {
   const [name, setName, email, setEmail, password, setPassword, err, setErr, validateForm] = props.data
-  const { handleGoogleAuth ,Alert} = useContext(AuthContext)
+  const { Alert} = useContext(AuthContext)
   return (
     <div className="bg-white w-full min-h-screen text-dark px-8 font-Mulish">
       <div className="w-full flex items-center justify-start py-8">
@@ -14,9 +14,9 @@ export default function SignUp(props) {
         </Link>
         <span className="pl-5 text-2xl font-extrabold">Sign Up</span>
       </div>
-      {Alert.status ? <AlertComp msg={Alert.msg}/> : null}
+      {Alert.status && Alert.signup && <AlertComp msg={Alert.msg}/> }
       <div className="w-full mt-5">
-        <button onClick={handleGoogleAuth} className="pointer hover:shadow-md transition transition-duration-300 border rounded-lg h-12 bg-white border-dark w-full py-2 flex items-center justify-center outline-none  text-sm border-opacity-10">
+        <button  className="pointer hover:shadow-md transition transition-duration-300 border rounded-lg h-12 bg-white border-dark w-full py-2 flex items-center justify-center outline-none  text-sm border-opacity-10">
           <svg
             className="mr-3"
             width="20"

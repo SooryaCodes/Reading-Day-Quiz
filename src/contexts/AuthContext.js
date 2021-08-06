@@ -17,8 +17,11 @@ export const AuthProvider = ({ children }) => {
     const [Alert, setAlert] = useState({ status: false, msg: "" });
     const history = useHistory();
     useEffect(() => {
+        
         firebase.auth().onAuthStateChanged(async (userData) => {
+            console.log(userData)
             if (userData) {
+        console.log("dh")
                 let ref = await firebase.firestore().collection("users").where("uid", "==", userData.uid).get();
                 let userRef = ref.docs.map((doc) => doc.data())[0]
                 setUser(userRef)
@@ -61,10 +64,10 @@ export const AuthProvider = ({ children }) => {
             .catch(error => {
                 var errorCode = error.code;
                 if (errorCode === "auth/email-already-in-use") {
-                    setAlert({ status: true, msg: "Email already exists please sign in" })
+                    setAlert({ status: true, msg: "Email already exists please sign in",signup:true,signin:false })
                     setLoading(false)
                 } else {
-                    setAlert({ status: true, msg: "Something went wrong please try again" })
+                    setAlert({ status: true, msg: "Something went wrong please try again",signup:true,signin:false })
                     setLoading(false)
                 }
                 setTimeout(() => {
@@ -80,7 +83,8 @@ export const AuthProvider = ({ children }) => {
                 history.push("/quiz")
             })
             .catch((error) => {
-                setAlert({ status: true, msg: "Something went wrong please try again" })
+              
+                setAlert({ status: true, msg: "There is no account with this credentials please signup",signup:false,signin:true })
                 setLoading(false)
                 setTimeout(() => {
                     setAlert({ status: false, msg: "" })
@@ -89,34 +93,11 @@ export const AuthProvider = ({ children }) => {
 
     }
 
-    //Handle Signout
-    const handleSignout = () => {
-        firebase.auth().signOut().then(function () {
-            history.push("/")
-            setUser(null)
-            setIsAuth(false)
-        }, function (error) {
-        });
-
-    }
 
 
-    // Handle Google Auth
-    const handleGoogleAuth = () => {
-
-        firebase.auth().signInWithPopup(provider).then((res) => {
-        }).catch((error) => {
-            setAlert({ status: true, msg: "Something went wrong please try again" })
-            setLoading(false)
-            setTimeout(() => {
-                setAlert({ status: false, msg: "" })
-            }, 5000);
-        })
-
-    }
 
     const value = {
-        handleSignup, user, setUser, isAuth, setIsAuth, handleSignout, handleSignin, loading, setLoading, handleGoogleAuth, Alert,score, setScore
+        handleSignup, user, setUser, isAuth, setIsAuth, handleSignin, loading, setLoading, Alert,score, setScore
     }
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

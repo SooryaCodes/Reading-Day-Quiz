@@ -11,22 +11,20 @@ export default function About() {
           <div className  ="w-full flex items-start justify-center pt-10">
             <span className="w-16 font-extrabold text-7xl -mt-6px ">T</span>
             <p className="w-full">
-              he crucial goal of our works in not only the celebration of the
-              written world but also good
+            he first reading day celebration is held in 1996.on june 19,2017 prime minister 
             </p>
           </div>
 
           <p className="w-full">
-            people's lives, from the early years through all the life path, for
-            personal and professional growing, education and inspiration.
+          launched the 22 nd National Reading month celebrations and called for unity to spread the message of READ AND GROW among all the citizens of the country by 2022.
           </p>
         </div>
       </div>
       {/* Right Section */}
       <div className="w-full h-full pt-12 relative">
         <span className="font-Mak-Bold text-6xl text-primary-col ">
-          The <br /> 19th <br /> Annual <br /> Book
-          <br /> Festival
+          The <br /> 26th <br /> National <br /> Reading
+          <br /> Day
         </span>
       </div>
     </div>

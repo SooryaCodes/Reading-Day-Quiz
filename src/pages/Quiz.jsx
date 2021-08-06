@@ -7,7 +7,7 @@ import { QuizContext } from '../contexts/QuizContext'
 
 export default function Quiz() {
     const { status, setStatus } = useContext(QuizContext)
-
+const {isAuth} = useContext(AuthContext)
     useEffect(() => {
         let quizCompleted = localStorage.getItem("quiz")
 
@@ -19,7 +19,7 @@ export default function Quiz() {
     })
     return (
         <>
-            {status ? (<Redirect to="/profile" />) : (<QuizComp />)}
+            {status ? (<Redirect to="/profile" />) : isAuth?(<QuizComp />):(<Redirect to="/" />)}
         </>
     )
 }

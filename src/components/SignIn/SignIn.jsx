@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import AlertComp from "../Alert/Alert";
 
 export default function SignIn(props) {
+  const { Alert} = useContext(AuthContext)
+
   const [ email, setEmail, password, setPassword, err, setErr, validateForm] = props.data
 
   return (
@@ -12,6 +16,8 @@ export default function SignIn(props) {
         </Link>
         <span className="pl-5 text-2xl font-extrabold">Sign In</span>
       </div>
+      {Alert.status && Alert.signin && <AlertComp msg={Alert.msg}/> }
+
       <div className="w-full mt-5">
         <button className="pointer hover:shadow-md transition transition-duration-300 border rounded-lg h-12 bg-white border-dark w-full py-2 flex items-center justify-center outline-none  text-sm border-opacity-10">
           <svg

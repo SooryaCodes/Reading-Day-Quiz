@@ -12,31 +12,38 @@ import { AuthContext } from "./contexts/AuthContext";
 import SignIn from "./pages/SignIn"
 import Loader from "./components/Loader/Loader"
 import Quiz from "./pages/Quiz"
-import Add from "./components/Add/Add";
 import Private from "./components/Private/Private"
 import Profile from "./pages/Profile";
 import Error from "./components/Error/Error";
 import PrivateAuth from "./components/Private/PrivateAuth"
+import Share from "./components/Share/Share"
 
 const App = () => {
   const history = useHistory();
   const { loading, user } = useContext(AuthContext)
+  useEffect(() => {
+    var mq = window.matchMedia("(max-width: 500px)");
+    if (mq.matches) {
+    }
+    else {
+      history.push("/info")
+    }
+  })
   return (
     <>
       {loading && <Loader />}
-
       <Switch  >
         {/* Home */}
         <Route path="/" exact component={Home} />
 
         {/* Signup */}
-        <PrivateAuth  path="/signup"  >
+        <PrivateAuth path="/signup"  >
           <SignUp />
         </PrivateAuth>
 
 
         {/* Signin */}
-        <PrivateAuth  path="/signin"  >
+        <PrivateAuth path="/signin"  >
           <SignIn />
         </PrivateAuth>
 
@@ -50,14 +57,22 @@ const App = () => {
         <Private path="/profile"  >
           <Profile />
         </Private>
-    
 
-        {/* Add */}
-        <Route path="/error">
-          <Error />
+        {/* Share */}
+        <Private path="/share"  >
+          <Share />
+        </Private>
+
+ {/* Info */}
+ <Route path="/info"  >
+          <Error desktop />
         </Route>
 
+        <Route pnf={true}><Error /></Route>
+
+       
       </Switch>
+
 
     </>
 
