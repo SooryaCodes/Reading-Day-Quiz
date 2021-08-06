@@ -16,6 +16,7 @@ import Add from "./components/Add/Add";
 import Private from "./components/Private/Private"
 import Profile from "./pages/Profile";
 import Error from "./components/Error/Error";
+import PrivateAuth from "./components/Private/PrivateAuth"
 
 const App = () => {
   const history = useHistory();
@@ -29,13 +30,13 @@ const App = () => {
         <Route path="/" exact component={Home} />
 
         {/* Signup */}
-        <Private path="/signup"  >
+        <Private  path="/signup"  >
           <SignUp />
         </Private>
 
 
         {/* Signin */}
-        <Private path="/signin"  >
+        <Private  path="/signin"  >
           <SignIn />
         </Private>
 
@@ -47,7 +48,8 @@ const App = () => {
 
         {/* Profile */}
         <Private path="/profile"  >
-          
+          {console.log("Hey")}
+        {console.log("Profile Section")}
           <Profile />
         </Private>
 

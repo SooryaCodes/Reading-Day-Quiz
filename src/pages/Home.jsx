@@ -19,7 +19,7 @@ export default function Home() {
             <div className="container mx-auto min-h-screen w-full ">
                 <More />
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }
