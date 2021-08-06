@@ -22,7 +22,7 @@ const App = () => {
   const history = useHistory();
   const { loading, user } = useContext(AuthContext)
   useEffect(() => {
-    var mq = window.matchMedia("(max-width: 800px)");
+    var mq = window.matchMedia("(max-width: 1000px)");
     if (mq.matches) {
     }
     else {
