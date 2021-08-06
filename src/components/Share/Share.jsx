@@ -74,7 +74,7 @@ const btn = useRef(null)
         className="text-3xl pt-2 font-semibold"
         style={{ color: "#323a53" }}
       >
-        {user?.score}/20
+        {user?.score}/10
       </p>
     </div>
 </div>
