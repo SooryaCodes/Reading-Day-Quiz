@@ -13,7 +13,7 @@ export default function Header() {
       </div>
       {/* Quiz */}
       <div className="flex items-center justify-center ">
-        <span onClick={() => { isAuth?history.push("/quiz"):history.push("/signin") }} className="cursor-pointer font-Cormorant-Unicase text-2xl font-normal">{user ? user.name : "Signin"}</span>
+        <span onClick={() => { isAuth?history.push("/quiz"):history.push("/signin") }} className="cursor-pointer font-Cormorant-Unicase text-2xl font-normal">{user ? user.name.split(" ")[0] : "Signin"}</span>
       </div>
     </div>
   );

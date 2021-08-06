@@ -19,7 +19,7 @@ const btn = useRef(null)
     const canvas = await html2canvas(shareTarget.current);
     const dataUrl = canvas.toDataURL();
     const blob = await (await fetch(dataUrl)).blob();
-    const filesArray = [new File([blob], 'score.png', { type: blob.type, lastModified: new Date().getTime() })];
+    const filesArray = [new File([blob], 'result.png', { type: blob.type, lastModified: new Date().getTime() })];
     const shareData = {
       files: filesArray,
     };
@@ -43,7 +43,7 @@ const btn = useRef(null)
 
     <div
     ref={shareTarget}
-    className="w-full bg-white  rounded-b-none rounded-t-2xl flex flex-col items-center justify-start"
+    className="w-full bg-white  rounded-b-none  flex flex-col items-center justify-start"
     style={{ height: "500px" }}
   >
     <lottie-player
@@ -81,7 +81,7 @@ const btn = useRef(null)
     </div>
 </div>
   </div>
-  <button ref={btn} hidden onClick={()=>onShare.bind(onShare, shareTarget)}></button>
+  <button ref={btn} hidden onClick={onShare.bind(onShare, shareTarget)}></button>
   </>
   );
 }
