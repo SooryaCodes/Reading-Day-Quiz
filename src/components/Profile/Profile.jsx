@@ -7,45 +7,7 @@ import html2canvas from 'html2canvas';
 
 export default function Profile() {
   const history = useHistory();
-  const shareTarget = useRef(<div
-    className="w-full bg-white  rounded-b-none rounded-t-2xl flex flex-col items-center justify-start"
-    style={{ height: "500px" }}
-  >
-    <lottie-player
-      src="https://assets4.lottiefiles.com/packages/lf20_8iczykai.json"
-      loop
-      background="transparent"
-      speed="1"
-      style={{ width: "320px", height: "320px", marginTop: "-40px" }}
-      autoplay
-    ></lottie-player>
-    <div className="-mt-8 flex flex-col items-center justify-start">
-      <p className="text-xl font-medium " style={{ color: "#33365c" }}>
-        Congrats {user?.name.split(" ")[0]}
-      </p>
-      <p
-        className="text-center text-sm px-10 pt-1 font-medium font-Mulish"
-        style={{ color: "#4c4f6e" }}
-      >
-        <strong>Hurreh! </strong> you have successfully completed the
-        Reading-Day-Quiz.
-      </p>
 
-      <p
-        className="pt-5 tracking-wider text-sm"
-        style={{ color: "#505d86" }}
-      >
-        YOUR SCORE
-      </p>
-      <p
-        className="text-3xl pt-2 font-semibold"
-        style={{ color: "#323a53" }}
-      >
-        {user?.score}/20
-      </p>
-    </div>
-
-  </div>)
   const { user, setUser } = useContext(AuthContext);
   useEffect(async () => {
     if (user) {
@@ -55,7 +17,6 @@ export default function Profile() {
     }
   }, [])
 
-  console.log(shareTarget.current)
 
   async function onShare(shareTarget) {
     if (!shareTarget.current) {
@@ -114,7 +75,45 @@ export default function Profile() {
           </p>
         </div>
         <div className="w-full flex items-center justify-between left-0 absolute bottom-10 px-8">
-          <button onClick={onShare.bind(onShare, shareTarget)} className="w-1/2 h-12 py-2  transition transition-duration-300 ease-in transform hover:scale-105 outline-none  rounded-md text-indigo-600">
+          <button onClick={onShare.bind(onShare, (<div
+    className="w-full bg-white  rounded-b-none rounded-t-2xl flex flex-col items-center justify-start"
+    style={{ height: "500px" }}
+  >
+    <lottie-player
+      src="https://assets4.lottiefiles.com/packages/lf20_8iczykai.json"
+      loop
+      background="transparent"
+      speed="1"
+      style={{ width: "320px", height: "320px", marginTop: "-40px" }}
+      autoplay
+    ></lottie-player>
+    <div className="-mt-8 flex flex-col items-center justify-start">
+      <p className="text-xl font-medium " style={{ color: "#33365c" }}>
+        Congrats {user?.name.split(" ")[0]}
+      </p>
+      <p
+        className="text-center text-sm px-10 pt-1 font-medium font-Mulish"
+        style={{ color: "#4c4f6e" }}
+      >
+        <strong>Hurreh! </strong> you have successfully completed the
+        Reading-Day-Quiz.
+      </p>
+
+      <p
+        className="pt-5 tracking-wider text-sm"
+        style={{ color: "#505d86" }}
+      >
+        YOUR SCORE
+      </p>
+      <p
+        className="text-3xl pt-2 font-semibold"
+        style={{ color: "#323a53" }}
+      >
+        {user?.score}/20
+      </p>
+    </div>
+
+  </div>))} className="w-1/2 h-12 py-2  transition transition-duration-300 ease-in transform hover:scale-105 outline-none  rounded-md text-indigo-600">
             Share
           </button>
           <button

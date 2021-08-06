@@ -62,7 +62,7 @@ export const QuizProvider = ({ children }) => {
     }
 
     // Handle Next
-    const handleNext = () => {
+    const handleNext = (end) => {
         setLoading(true)
         if (answer != null) {
             let status = validateAnswer()
@@ -77,14 +77,19 @@ export const QuizProvider = ({ children }) => {
             handleQuiz(false)
         }
 
+    if(end === true){
+        console.log("hey")
+        endQuiz()
+    }else {
         if (user.questionNo < 5) {
             setAnswer(null)
             setScore(null)
             setQuiz(null)
             getUserData()
-        } else {
+        } else if(user.questionNo === 5){
             endQuiz()
         }
+    }
     }
 
 
