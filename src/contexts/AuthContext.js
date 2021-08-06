@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
                 let ref = await firebase.firestore().collection("users").where("uid", "==", userData.uid).get();
                 let userRef = ref.docs.map((doc) => doc.data())[0]
                 setUser(userRef)
-                setScore(userRef.score)
                 setIsAuth(true) 
                 setLoading(false)   
             } else {
@@ -51,7 +50,6 @@ export const AuthProvider = ({ children }) => {
                 }
                 db.collection("users").add(user)
                     .then((docRef) => {
-                        console.log(docRef.id);
                         localStorage.setItem("docId", docRef.id);
                         handleSignin(email, password)
                     })
@@ -107,7 +105,6 @@ export const AuthProvider = ({ children }) => {
     const handleGoogleAuth = () => {
 
         firebase.auth().signInWithPopup(provider).then((res) => {
-            console.log(res.user)
         }).catch((error) => {
             setAlert({ status: true, msg: "Something went wrong please try again" })
             setLoading(false)

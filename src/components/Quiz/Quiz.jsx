@@ -7,10 +7,14 @@ import { QuizContext } from "../../contexts/QuizContext";
 export default function Quiz() {
   const { quiz, setQuiz, handleAnswer, answer, handleNext } =
     useContext(QuizContext);
-  const { user, setLoading } = useContext(AuthContext);
+  const { user, setLoading, score, setScore } = useContext(AuthContext);
+  const getUserData = async () => {
+    let ref = await firebase.firestore().collection("users").where("uid", "==", user.uid).get();
+    let userRef = ref.docs.map((doc) => doc.data())[0]
+    setScore(userRef.score)
+  }
 
   useEffect(async () => {
-    console.log(quiz === null);
     if (user && quiz === null) {
       let ref = await firebase
         .firestore()
@@ -20,8 +24,10 @@ export default function Quiz() {
       let tempArray = ref.docs.map((doc) => doc.data())[0];
       setQuiz(tempArray);
       setLoading(false);
+      getUserData()
     }
-  }, [user, answer, quiz]);
+
+  }, [user, answer, quiz, score]);
 
   return (
     <div className="bg-white w-full min-h-screen text-dark-700 px-8 font-Mulish relative">
@@ -50,11 +56,10 @@ export default function Quiz() {
           <div
             key={option.answerText}
             onClick={() => handleAnswer(index)}
-            className={`${
-              option.active
-                ? "bg-indigo-500 shadow-md text-white"
-                : "border border-opacity-10 border-dark text-dark "
-            }  pointer mt-5 hover:shadow-md transition transition-duration-300   cursor-pointer rounded-lg h-12 pl-5 bg-white  w-full py-2 flex items-center justify-start outline-none  text-base `}
+            className={`${option.active
+              ? "bg-indigo-500 shadow-md text-white"
+              : "border border-opacity-10 border-dark text-dark "
+              }  pointer mt-5 hover:shadow-md transition transition-duration-300   cursor-pointer rounded-lg h-12 pl-5 bg-white  w-full py-2 flex items-center justify-start outline-none  text-base `}
           >
             {option.answerText}
           </div>

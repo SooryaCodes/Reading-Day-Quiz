@@ -17,6 +17,7 @@ import Private from "./components/Private/Private"
 import Profile from "./pages/Profile";
 import Error from "./components/Error/Error";
 import PrivateAuth from "./components/Private/PrivateAuth"
+import Share from "./components/Share/Share"
 
 const App = () => {
   const history = useHistory();
@@ -30,15 +31,15 @@ const App = () => {
         <Route path="/" exact component={Home} />
 
         {/* Signup */}
-        <Private  path="/signup"  >
+        <PrivateAuth  path="/signup"  >
           <SignUp />
-        </Private>
+        </PrivateAuth>
 
 
         {/* Signin */}
-        <Private  path="/signin"  >
+        <PrivateAuth  path="/signin"  >
           <SignIn />
-        </Private>
+        </PrivateAuth>
 
 
         {/* Quiz */}
@@ -48,9 +49,11 @@ const App = () => {
 
         {/* Profile */}
         <Private path="/profile"  >
-          {console.log("Hey")}
-        {console.log("Profile Section")}
           <Profile />
+        </Private>
+        {/* Share */}
+        <Private path="/share"  >
+          <Share />
         </Private>
 
 

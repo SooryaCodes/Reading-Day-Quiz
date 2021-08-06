@@ -5,7 +5,6 @@ export default function Add() {
   useEffect(async () => {
     let ref = await firebase.firestore().collection("quiz").get();
     let quiz = ref.docs.map((doc) => doc.data());
-    console.log(quiz);
   }, []);
   return <div></div>;
 }

@@ -14,7 +14,7 @@ export const QuizProvider = ({ children }) => {
     const { score, setScore } = useContext(AuthContext);
     const [answer, setAnswer] = useState();
     const { user, setUser, setLoading } = useContext(AuthContext)
-    const [status,setStatus] = useState(false);
+    const [status, setStatus] = useState(false);
     const history = useHistory()
 
     // Handle Answer
@@ -41,9 +41,7 @@ export const QuizProvider = ({ children }) => {
         let userRef = firebase.firestore().collection("users").doc(docId)
         let quizScore = score
         let userData = user
-
         if (status) {
-
             userRef.update({ score: quizScore + 1, questionNo: userData.questionNo + 1 })
         } else {
 
@@ -56,10 +54,8 @@ export const QuizProvider = ({ children }) => {
     const validateAnswer = () => {
         let status = false
         quiz.answerOptions.forEach((item) => {
-            if (item.isCorrect) {
-                if (item.answerText === answer) {
-                    status = true
-                }
+            if (item.isCorrect && item.answerText === answer) {
+                status = true
             }
         })
         return status
@@ -83,6 +79,7 @@ export const QuizProvider = ({ children }) => {
 
         if (user.questionNo < 5) {
             setAnswer(null)
+            setScore(null)
             setQuiz(null)
             getUserData()
         } else {
@@ -103,7 +100,7 @@ export const QuizProvider = ({ children }) => {
     }
 
     const value = {
-        quiz, setQuiz, handleAnswer, answer, handleNext,status,setStatus
+        quiz, setQuiz, handleAnswer, answer, handleNext, status, setStatus
     }
 
     return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;

@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
 import "@lottiefiles/lottie-player";
 import { useHistory } from "react-router-dom";
 
+import html2canvas from 'html2canvas';
+
+
+async function onShare(shareTarget) {
+  if (!shareTarget.current) {
+    return;
+  }
+  const canvas = await html2canvas(shareTarget.current);
+  const dataUrl = canvas.toDataURL();
+  const blob = await (await fetch(dataUrl)).blob();
+  const filesArray= [new File([blob], 'htmldiv.png', { type: blob.type, lastModified: new Date().getTime() })];
+  const shareData = {
+    files: filesArray,
+  };
+  navigator.share(shareData).then(() => {
+    console.log('Shared successfully');
+  });
+}
+
 export default function Profile() {
   const history = useHistory();
+const shareTarget = useRef(null)
+
   return (
     <div className="w-full h-screen bg-indigo-500 relative font-Roboto">
       <div
+      ref={shareTarget}
         className="w-full bg-white absolute bottom-0 rounded-b-none rounded-t-2xl flex flex-col items-center justify-start"
         style={{ height: "86%" }}
       >
