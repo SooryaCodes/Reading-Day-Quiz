@@ -13,10 +13,8 @@ const btn = useRef(null)
   
   
   async function onShare(shareTarget) {
-    if (!shareTarget.current) {
-      return;
-    }
-    const canvas = await html2canvas(shareTarget.current);
+    
+      const canvas = await html2canvas(shareTarget.current);
     const dataUrl = canvas.toDataURL();
     const blob = await (await fetch(dataUrl)).blob();
     const filesArray = [new File([blob], 'result.png', { type: blob.type, lastModified: new Date().getTime() })];
