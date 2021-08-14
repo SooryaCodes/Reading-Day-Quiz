@@ -17,12 +17,13 @@ import Profile from "./pages/Profile";
 import Error from "./components/Error/Error";
 import PrivateAuth from "./components/Private/PrivateAuth"
 import Share from "./components/Share/Share"
+import Result from "./components/Result/Result";
 
 const App = () => {
   const history = useHistory();
   const { loading, user } = useContext(AuthContext)
   useEffect(() => {
-    var mq = window.matchMedia("(max-width: 1000px)");
+    var mq = window.matchMedia("(max-width: 3000px)");
     if (mq.matches) {
     }
     else {
@@ -47,6 +48,7 @@ const App = () => {
           <SignIn />
         </PrivateAuth>
 
+       <Route path="/result" component={Result}/>
 
         {/* Quiz */}
         <Private path="/quiz"  >
@@ -70,7 +72,6 @@ const App = () => {
 
         <Route pnf={true}><Error /></Route>
 
-       
       </Switch>
 
 
